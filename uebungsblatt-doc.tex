@@ -1,0 +1,80 @@
+\documentclass[12pt]{scrartcl}
+  \usepackage{german}    
+  \usepackage[latin1,utf8]{inputenc} 
+  \usepackage{amsmath}   % enthaelt nuetzliche Makros fuer Mathematik
+  \usepackage{amsthm}    % fuer Saetze, Definitionen, Beweise, etc.
+  \usepackage{relsize}   % fuer \smaller 
+  \usepackage{enumitem}
+  % Deklaration eigener Mathematik-Makros
+  \newcommand{\N}{\ensuremath{\mathbf{N}}}   % natuerliche Zahlen
+  \newcommand{\Z}{\ensuremath{\mathbf{Z}}}   % ganze Zahlen
+  \newcommand{\Q}{\ensuremath{\mathbf{Q}}}   % rationale Zahlen
+  \newcommand{\R}{\ensuremath{\mathbf{R}}}   % reelle Zahlen
+  % Deklaration eigener Satz-/Definitions-/Beweisumgebungen mit amsthm
+  \newtheorem{satz}{Satz}[section]
+  \newtheorem{lemma}[satz]{Lemma}
+  \newtheorem{korollar}[satz]{Korollar}
+  \theoremstyle{definition}
+  \newtheorem{definition}[satz]{Definition}
+  \newtheorem{bemerkung}[satz]{Bemerkung}
+  \newtheorem{aufgabe}[satz]{Aufgabe}
+  \newenvironment{beweis}%
+    {\begin{proof}[Beweis]}
+    {\end{proof}}
+  \newtheorem{beispiel}[satz]{Beispiel}
+
+  \makeatletter % Fussnote ohne Symbol
+    \def\blfootnote{\xdef\@thefnmark{}\@footnotetext}
+  %   #1 Titel
+  %   #2 Blattnummer
+  %   #3 Namen
+  %   #4 Gruppe
+  \newcommand{\handouttitle}[4]
+   {\begin{center}
+      \textbf{\LARGE #1} \\
+      \vspace{.4cm}
+      \textbf{\Large #2}
+    \end{center}
+    \bigskip
+    \noindent
+    {\textbf{Namen:}}\ #3  \\
+	{ \textbf{Gruppe:}} \ #4  
+    \hfill
+    \blfootnote{Vorlesung \glqq Algebra und Zahlentheorie\grqq, 
+      SS~2022, {\smaller HU}~B\"erlin}
+    \noindent
+    \rule{\linewidth}{.5pt}
+    \bigskip
+    \@afterindentfalse\@afterheading
+   }
+  \makeatother
+  
+% Anfang des eigentlichen Dokuments%
+\begin{document}
+  \handouttitle{Algebra und Zahlentheorie} 
+               {Übungsblatt 1}
+               {Max Mustermann, Maxi Musterfrau, Tang Hoang Griep}
+               {000}
+%START%
+\paragraph*{\textbf{\large{Aufgabe 1}}}
+	\begin{enumerate}[label=(\alph*)]
+	\item Beweise mit Hilfe vollständiger Induktion  \\
+	$\displaystyle\sum_{n=1}^{n} k = 1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2} $
+	\end{enumerate}
+	\begin{proof}
+	  \textbf{Induktionsanfang:} Sei $n=1$. Dann gilt: \\
+	  \begin{align*}
+	    \displaystyle\sum_{n=1}^{1} n = 1  = \frac{1(1+1)}{2} 
+	  \end{align*}
+	  \textbf{Induktionsvoraussetzung:} Sei $n \in \N$ beliebig fix. Die zu beweisende
+	                                    Aussage gelte für dieses $n$.\\
+	  \textbf{Induktionsschritt:} Dann gilt diese Aussage auch für $n+1$ ,denn
+	  \begin{align*}
+	    \displaystyle\sum_{n=1}^{n+1} k = 1 + 2 + 3 + \cdots + n + (n+1) &= \frac{(n+1)(n+2)}{2} \\
+	    1 + 2 + 3 + \cdots + n + (n+1) &= \frac{(n^2 + 3n + 2)}{2}	\\
+	    1 + 2 + 3 + \cdots + n &= \frac{(n^2 + 3n + 2)}{2} - \frac{2(n+1)}{2} \\
+	    1 + 2 + 3 + \cdots + n &= \frac{n^2 + n}{2} \\
+	    1 + 2 + 3 + \cdots + n &= \frac{n(n+1)}{2}
+	  \end{align*}
+	\end{proof}
+\end{document}
